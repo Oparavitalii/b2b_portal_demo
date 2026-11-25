@@ -1,0 +1,106 @@
+/* "Moje konto" — left menu like shop.catalog-demo.example (woocommerce account navigation),
+   content on the right. One column on phones; grids use minmax(0, 1fr). */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-lg);
+  align-items: start;
+}
+
+@media (min-width: 62em) {
+  .layout {
+    grid-template-columns: 16rem minmax(0, 1fr);
+  }
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+  overflow: hidden;
+}
+
+.menu li + li {
+  border-top: 1px solid var(--cdm-border);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: var(--cdm-fs-sm);
+  font-weight: 500;
+  color: var(--cdm-ink-dim);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--cdm-dur-fast) var(--cdm-ease-out),
+    color var(--cdm-dur-fast) var(--cdm-ease-out);
+}
+
+.menuItem:hover {
+  background: var(--cdm-surface);
+  color: var(--cdm-ink);
+}
+
+.menuItem:focus-visible {
+  outline: 2px solid var(--cdm-ink);
+  outline-offset: -2px;
+}
+
+.menuItem:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* Active item: ink rule + bold ink, never red (red is the page CTA). */
+.menuItemActive {
+  border-left-color: var(--cdm-ink);
+  background: var(--cdm-surface);
+  color: var(--cdm-ink);
+  font-weight: 700;
+}
+
+.content {
+  min-width: 0;
+}
+
+.panel {
+  padding: var(--cdm-space-lg) var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+}
+
+@media (min-width: 48em) {
+  .panel {
+    padding: var(--cdm-space-lg);
+  }
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-md);
+}
+
+@media (min-width: 48em) {
+  .fieldGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.formNarrow {
+  max-width: 28rem;
+}

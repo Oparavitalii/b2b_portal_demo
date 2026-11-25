@@ -1,0 +1,400 @@
+/* Catalogue — same look as the shop (shop.catalog-demo.example shop.css .cdm-bar / product grid).
+   Grids use minmax(min(100%, X), 1fr): never a bare 1fr (mobile overflow). */
+
+.bar {
+  padding: var(--cdm-space-md);
+  margin-bottom: var(--cdm-space-md);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+}
+
+.barGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--cdm-space-sm);
+}
+
+.search {
+  grid-column: 1 / -1;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cdm-space-sm);
+  margin-bottom: var(--cdm-space-md);
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: var(--cdm-space-md);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--cdm-bg);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  overflow: hidden;
+  color: var(--cdm-ink);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--cdm-ink);
+  box-shadow: var(--cdm-shadow-md);
+}
+
+/* Stretched link: the name covers the whole card, so the card opens the product. */
+.cardLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.cardLink:focus-visible {
+  outline: none;
+}
+
+/* Interactive elements of the card sit above the stretched link. */
+.tileAction {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--cdm-space-sm);
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--cdm-space-xs);
+  padding: var(--cdm-space-md);
+}
+
+.cardBody .eyebrow {
+  margin: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-xs);
+  min-width: 0;
+}
+
+.summaryEnd {
+  display: flex;
+  align-items: center;
+  gap: var(--cdm-space-sm);
+}
+
+/* List view: one row per product. Photo | name block | price + cart button.
+   Below ~560px the price block wraps under the name; nothing is wider than
+   the screen. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-sm);
+}
+
+.cardList {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.cardList .media {
+  flex: 0 0 96px;
+  align-self: flex-start;
+  width: 96px;
+  height: 96px;
+  aspect-ratio: auto;
+}
+
+@media (max-width: 420px) {
+  .cardList .media {
+    flex-basis: 72px;
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.cardList .fallback span {
+  display: none;
+}
+
+.cardList .cardBody {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cdm-space-sm) var(--cdm-space-md);
+  min-width: 0;
+  padding: var(--cdm-space-sm) var(--cdm-space-md);
+}
+
+.cardList .info {
+  flex: 1 1 260px;
+}
+
+.cardList .name {
+  font-size: var(--cdm-fs-md);
+}
+
+.cardList .priceArea {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cdm-space-sm) var(--cdm-space-md);
+  min-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.cardList .tileAction {
+  width: auto;
+  margin-top: 0;
+}
+
+.cardList .net {
+  font-size: var(--cdm-fs-lg);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--cdm-font-head);
+  font-size: var(--cdm-fs-lg);
+  font-weight: 600;
+  line-height: var(--cdm-lh-heading);
+  overflow-wrap: anywhere;
+}
+
+.sku {
+  font-family: var(--cdm-font-mono);
+  font-size: var(--cdm-fs-xs);
+  letter-spacing: var(--cdm-ls-mono);
+  color: var(--cdm-ink-muted);
+}
+
+.priceArea {
+  margin-top: auto;
+  padding-top: var(--cdm-space-sm);
+}
+
+.listRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cdm-space-xs);
+  margin-bottom: 2px;
+}
+
+.listPrice {
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-muted);
+}
+
+/* Product image: square, contained, neutral fallback box. */
+.media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background: var(--cdm-surface);
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.fallback {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--cdm-space-xs);
+  width: 100%;
+  height: 100%;
+  color: var(--cdm-chrome-mid);
+  font-size: var(--cdm-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--cdm-ls-eyebrow);
+}
+
+/* Price block */
+.net {
+  font-family: var(--cdm-font-head);
+  font-size: var(--cdm-fs-xl);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cdm-ink);
+}
+
+.netLarge {
+  font-size: var(--cdm-fs-2xl);
+}
+
+.unit {
+  margin-left: 0.35em;
+  font-family: var(--cdm-font-body);
+  font-size: var(--cdm-fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--cdm-ls-eyebrow);
+  color: var(--cdm-ink-muted);
+}
+
+.small {
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-dim);
+}
+
+.onRequest {
+  font-family: var(--cdm-font-head);
+  font-size: var(--cdm-fs-lg);
+  font-weight: 600;
+  color: var(--cdm-ink);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--cdm-space-lg);
+}
+
+.empty {
+  padding: var(--cdm-space-xl) var(--cdm-space-md);
+  text-align: center;
+  background: var(--cdm-surface);
+  border: 1px dashed var(--cdm-border-strong);
+  border-radius: var(--cdm-radius-md);
+  color: var(--cdm-ink-dim);
+}
+
+/* Product page */
+.productLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--cdm-space-lg);
+  align-items: start;
+}
+
+.gallery {
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  overflow: hidden;
+}
+
+.buyBox {
+  padding: var(--cdm-space-md);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+}
+
+.oeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cdm-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.oeList li {
+  padding: 2px 8px;
+  font-family: var(--cdm-font-mono);
+  font-size: var(--cdm-fs-xs);
+  letter-spacing: var(--cdm-ls-mono);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+}
+
+.section {
+  margin-top: var(--cdm-space-lg);
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.attrs {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: var(--cdm-space-xs) var(--cdm-space-md);
+  margin: 0;
+}
+
+.attrs dt {
+  font-weight: 600;
+  color: var(--cdm-ink-dim);
+}
+
+.attrs dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Stock + delivery time (B-19) — StockInfo.tsx */
+.stock {
+  margin: var(--cdm-space-xs) 0 0;
+}
+
+.stockLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  margin: 0;
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-ink-dim);
+}
+
+.stockDotOk,
+.stockDotWait {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cdm-success);
+}
+
+.stockDotWait {
+  background: var(--cdm-warning);
+}
+
+.stockLead {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.stockSep {
+  color: var(--cdm-ink-muted);
+}
+
+.stockIcon {
+  flex: none;
+  color: var(--cdm-ink-muted);
+}
+

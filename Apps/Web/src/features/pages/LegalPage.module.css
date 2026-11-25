@@ -1,0 +1,200 @@
+/* Legal pages + Kontakt — light register, read not scanned (port of
+   shop.catalog-demo.example assets/css/pages/legal.css and kontakt.css). The only accent
+   is an ink rule beside section headings; red stays for the page CTA. */
+
+.doc {
+  max-width: 46rem;
+}
+
+.status {
+  margin: 0 0 var(--cdm-space-lg);
+  padding: var(--cdm-space-md);
+  border-left: 3px solid var(--cdm-warning);
+  background: var(--cdm-surface);
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-dim);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cdm-space-xs) var(--cdm-space-md);
+  margin: 0 0 var(--cdm-space-md);
+  padding: 0;
+  list-style: none;
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-muted);
+}
+
+.intro {
+  margin: 0 0 var(--cdm-space-lg);
+  font-size: var(--cdm-fs-lg);
+  line-height: var(--cdm-lh-body);
+  color: var(--cdm-ink-dim);
+}
+
+.toc {
+  margin: 0 0 var(--cdm-space-lg);
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+}
+
+.tocList {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--cdm-fs-sm);
+}
+
+@media (min-width: 48em) {
+  .tocList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tocList a {
+  color: var(--cdm-ink-dim);
+  text-decoration: none;
+}
+
+.tocList a:hover {
+  color: var(--cdm-ink);
+  text-decoration: underline;
+}
+
+.section {
+  margin: 0 0 var(--cdm-space-lg);
+  scroll-margin-top: calc(var(--cdm-nav-height) + var(--cdm-space-md));
+}
+
+.sectionHeading {
+  margin: 0 0 var(--cdm-space-sm);
+  padding-left: var(--cdm-space-sm);
+  border-left: 3px solid var(--cdm-ink);
+  font-family: var(--cdm-font-head);
+  font-size: var(--cdm-fs-xl);
+  font-weight: 700;
+  line-height: var(--cdm-lh-heading);
+  color: var(--cdm-ink);
+}
+
+.paragraph {
+  margin: 0 0 var(--cdm-space-sm);
+  max-width: var(--cdm-prose-max);
+  line-height: var(--cdm-lh-prose);
+  color: var(--cdm-ink-dim);
+  overflow-wrap: anywhere;
+}
+
+/* API documentation (/dokumentacja-api): lists and code blocks. A code block scrolls
+   inside itself, so a long line never widens the page on a phone. */
+.list {
+  margin: 0 0 var(--cdm-space-sm);
+  padding-left: 1.25rem;
+  max-width: var(--cdm-prose-max);
+  line-height: var(--cdm-lh-prose);
+  color: var(--cdm-ink-dim);
+  overflow-wrap: anywhere;
+}
+
+.list li {
+  margin-bottom: var(--cdm-space-xs);
+}
+
+.code {
+  margin: 0 0 var(--cdm-space-md);
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  font-size: var(--cdm-fs-sm);
+}
+
+/* [[DO WERYFIKACJI PRAWNIKA: …]] — visible on purpose until a lawyer clears it. */
+.flag {
+  padding: 1px 4px;
+  border-radius: var(--cdm-radius-sm);
+  background: color-mix(in srgb, var(--cdm-warning) 16%, var(--cdm-bg));
+  color: var(--cdm-ink);
+  font-size: 0.95em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---------- Kontakt ---------- */
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-md);
+  margin-bottom: var(--cdm-space-lg);
+}
+
+@media (min-width: 48em) {
+  .contactGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 75em) {
+  .contactGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  gap: var(--cdm-space-sm);
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-surface);
+  min-width: 0;
+}
+
+.cardIcon {
+  flex-shrink: 0;
+  color: var(--cdm-ink);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cardLabel {
+  font-size: var(--cdm-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--cdm-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cdm-ink-muted);
+}
+
+.cardValue {
+  color: var(--cdm-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+a.cardValue:hover {
+  text-decoration: underline;
+}
+
+.legalBlock {
+  margin-top: var(--cdm-space-lg);
+  padding-top: var(--cdm-space-md);
+  border-top: 1px solid var(--cdm-border);
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-muted);
+}
+
+.legalBlock p {
+  margin: 0 0 var(--cdm-space-xs);
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,43 @@
+# dependencies / vendored libraries
+node_modules/
+vendor/
+
+# build output
+dist/
+*.tsbuildinfo
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# secrets: only *.example files are tracked
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+credentials.json
+wp-config.php
+
+# runtime data
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.log
+*.sql.gz
+*.wpress
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+npm-debug.log*
+
+# API storage (database, mail log, backups, imports)
+Apps/Api_Php/storage/*
+!Apps/Api_Php/storage/.gitkeep
+Apps/Web/public/img/products/

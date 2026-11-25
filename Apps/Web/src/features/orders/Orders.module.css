@@ -1,0 +1,148 @@
+/* Orders + cart totals. Prices in ink, never red (red = the page CTA).
+   Grids use minmax(0, 1fr) / minmax(min(100%, X), 1fr): no bare 1fr. */
+
+.totals {
+  padding: var(--cdm-space-md);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+}
+
+.totalsList {
+  margin: 0;
+}
+
+.totalsList > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--cdm-space-md);
+  padding: 6px 0;
+  font-size: var(--cdm-fs-sm);
+}
+
+.totalsList dt {
+  color: var(--cdm-ink-dim);
+}
+
+.totalsList dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--cdm-ink);
+  white-space: nowrap;
+}
+
+.totalsList > .totalsFinal {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 2px solid var(--cdm-ink);
+  font-size: var(--cdm-fs-md);
+}
+
+.totalsFinal dt,
+.totalsFinal dd {
+  font-weight: 700;
+  color: var(--cdm-ink);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--cdm-space-md);
+  font-size: var(--cdm-fs-sm);
+  font-weight: 500;
+  color: var(--cdm-ink-dim);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--cdm-ink);
+  text-decoration: underline;
+}
+
+.link {
+  font-weight: 600;
+  color: var(--cdm-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-ink-muted);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--cdm-space-md);
+  margin-bottom: var(--cdm-space-lg);
+}
+
+.card {
+  min-width: 0;
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+  font-size: var(--cdm-fs-sm);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.cardTitle {
+  margin: 0 0 6px;
+  font-size: var(--cdm-fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cdm-ink-muted);
+}
+
+.summaryRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-lg);
+  margin-top: var(--cdm-space-lg);
+}
+
+@media (min-width: 48em) {
+  .summaryRow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  }
+}
+
+/* „Przesyłka” card on the order page (B-22: R-03). */
+.shipping {
+  margin-bottom: var(--cdm-space-lg);
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+  font-size: var(--cdm-fs-sm);
+  overflow-wrap: anywhere;
+}
+
+.mutedText {
+  color: var(--cdm-ink-dim);
+}
+
+.shipmentList {
+  display: grid;
+  gap: var(--cdm-space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shipmentItem + .shipmentItem {
+  padding-top: var(--cdm-space-md);
+  border-top: 1px solid var(--cdm-border);
+}

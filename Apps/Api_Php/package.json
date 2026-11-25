@@ -1,0 +1,11 @@
+{
+  "name": "@catalog/api-php",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "php -S 127.0.0.1:8080 public/index.php",
+    "test": "php tests/Lint.php && php tests/Run.php",
+    "db:migrate": "php database/Migrate.php",
+    "db:reset": "php database/Migrate.php --fresh && php database/Seed.php"
+  }
+}

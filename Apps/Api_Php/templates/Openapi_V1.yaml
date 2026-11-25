@@ -1,0 +1,163 @@
+openapi: 3.0.3
+info:
+  title: DEMO PARTS Katalog — API dla klientów
+  version: '1.0'
+  description: >
+    Tylko odczyt. Produkty z cenami właściciela klucza (jego rabat). Kwoty w groszach
+    (liczby całkowite). Limit 120 zapytań na minutę na klucz. Opis:
+    https://portal.catalog-demo.example/dokumentacja-api. Ten plik:
+    https://portal.catalog-demo.example/api/v1/openapi.yaml. Metody zapisu (POST, PUT, PATCH,
+    DELETE) zwracają 405 z nagłówkiem Allow: GET, HEAD.
+servers:
+  - url: https://portal.catalog-demo.example/api/v1
+security:
+  - apiKey: []
+paths:
+  /products:
+    get:
+      summary: Lista produktów (stronami)
+      parameters:
+        - { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+        - { name: pageSize, in: query, schema: { type: integer, minimum: 1, maximum: 500, default: 100 } }
+        - name: updatedSince
+          in: query
+          description: Tylko produkty zmienione od tej chwili (ISO 8601, np. 2026-10-14T00:00:00Z lub 2026-10-14; plus strefy kodować jako %2B). Wycofane produkty wracają z active=false.
+          schema: { type: string }
+      responses:
+        '200':
+          description: Strona produktów
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Meta'
+                  - type: object
+                    required: [items, total, page, pageSize]
+                    properties:
+                      items: { type: array, items: { $ref: '#/components/schemas/Product' } }
+                      total: { type: integer }
+                      page: { type: integer }
+                      pageSize: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /products/{sku}:
+    get:
+      summary: Jeden produkt
+      parameters:
+        - { name: sku, in: path, required: true, schema: { type: string, maxLength: 100 } }
+      responses:
+        '200':
+          description: Produkt
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Meta'
+                  - type: object
+                    required: [item]
+                    properties:
+                      item: { $ref: '#/components/schemas/Product' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404':
+          description: Brak produktu, nieaktywny lub poza zakresem klucza
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      description: 'Klucz z Moje konto → Klucze API: Authorization: Bearer cdm_live_…'
+  responses:
+    BadRequest:
+      description: Zły parametr
+    Unauthorized:
+      description: Brak, zły lub unieważniony klucz; zablokowane konto
+      headers:
+        WWW-Authenticate:
+          schema: { type: string, example: 'Bearer realm="catalog-api"' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    TooManyRequests:
+      description: Ponad 120 zapytań na minutę na klucz
+      headers:
+        Retry-After:
+          description: Ile sekund odczekać (to samo co meta.retryAfter)
+          schema: { type: integer, example: 60 }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string, example: UNAUTHORIZED }
+        meta: { type: object, example: { retryAfter: 60 } }
+    Meta:
+      type: object
+      required: [discountPercent, currency, amountsIn, vatRate, generatedAt]
+      properties:
+        discountPercent: { type: number, example: 10, description: Twój rabat ogólny (produkty mogą mieć własny — discountPercent pozycji) }
+        currency: { type: string, enum: [PLN] }
+        amountsIn: { type: string, enum: [grosze] }
+        vatRate: { type: number, example: 0.23 }
+        generatedAt: { type: string, format: date-time, description: Zapisz i podaj jako updatedSince przy następnej synchronizacji }
+    Price:
+      type: object
+      required: [unitNet, unitGross, unitDeposit]
+      properties:
+        unitNet: { type: integer, description: Cena netto klienta za 1 szt. (grosze) }
+        unitGross: { type: integer, description: Cena brutto klienta za 1 szt. (grosze) }
+        unitDeposit: { type: integer, description: Kaucja brutto za 1 szt. (grosze, bez rabatu) }
+        listNet: { type: integer, description: Cena katalogowa netto przed rabatem (tylko z rabatem) }
+        listGross: { type: integer, description: Cena katalogowa brutto przed rabatem (tylko z rabatem) }
+    Variant:
+      type: object
+      required: [key, price]
+      properties:
+        key: { type: string, enum: [oryginalne, zamienne] }
+        price:
+          nullable: true
+          type: object
+          properties:
+            unitNet: { type: integer }
+            unitGross: { type: integer }
+            listNet: { type: integer }
+            listGross: { type: integer }
+    Product:
+      type: object
+      required: [sku, name, priceOnRequest, price, hasVariants, variants, stock, leadTimeHours, active, updatedAt]
+      properties:
+        sku: { type: string }
+        name: { type: string }
+        category: { type: string, nullable: true }
+        producer: { type: string, nullable: true }
+        imageUrl: { type: string, nullable: true, format: uri }
+        makes: { type: array, items: { type: string } }
+        priceOnRequest: { type: boolean }
+        price: { allOf: [{ $ref: '#/components/schemas/Price' }], nullable: true }
+        hasVariants: { type: boolean }
+        variants: { type: array, items: { $ref: '#/components/schemas/Variant' } }
+        stock: { type: integer, description: Sztuki w magazynie }
+        leadTimeHours: { type: integer, enum: [24, 48, 72], description: Czas wysyłki 1 szt. }
+        discountPercent: { type: number, example: 10, description: Twój rabat na ten produkt (rabat produktowy albo ogólny) }
+        oeNumbers: { type: array, items: { type: string } }
+        engineCodes: { type: array, items: { type: string } }
+        applications:
+          type: array
+          items:
+            type: object
+            properties:
+              marka: { type: string }
+              model: { type: string }
+              silnik: { type: string }
+              lata: { type: string }
+        description: { type: string, nullable: true }
+        attributes: { type: object, additionalProperties: true }
+        active: { type: boolean, description: false = produkt wycofany (tylko przy updatedSince) }
+        updatedAt: { type: string, format: date-time }

@@ -1,0 +1,548 @@
+{
+  "_meta": {
+    "opis": "Próbka 4 rekordów w formacie produkcyjnego Products_Data.json; dane przykładowe (testy importu T-05 i E2E).",
+    "waluta": "PLN",
+    "bazowyUrlObrazow": "https://shop.catalog-demo.example/wp-content/themes/woodmart-child/assets/img/products/"
+  },
+  "produkty": [
+    {
+      "sku": "095000-5800",
+      "obrazZrodlowy": "Grp_Produkt_Denso_095000_5800",
+      "obraz": "Produkt_Denso_095000_5800.webp",
+      "nazwa": "Wtryskiwacz Denso 095000-5800 — regenerowany",
+      "kategoria": "Wtryskiwacze",
+      "producent": "Denso",
+      "typ": "Wtryskiwacz CR",
+      "markaPojazdu": [
+        "Citroën",
+        "Fiat",
+        "Ford",
+        "Peugeot"
+      ],
+      "kodSilnika": [
+        "4HV",
+        "JXFA",
+        "JXFC",
+        "P22DTE",
+        "P8FA",
+        "P8FB",
+        "PHFA",
+        "PHFC",
+        "QVFA"
+      ],
+      "numeryOem": [
+        "00001980J7",
+        "095000-5800",
+        "0950005801",
+        "1372379",
+        "1372397",
+        "1378432",
+        "1812618",
+        "1980T7",
+        "6C1Q9K546AB",
+        "6C1Q9K546AC",
+        "71724128",
+        "71793003",
+        "71794621",
+        "9659325580",
+        "DCRI105800R"
+      ],
+      "wymienioneCzesci": [
+        "rozpylacz",
+        "zawór sterujący",
+        "komplet uszczelnień"
+      ],
+      "infoDodatkowe": "Zalecana wymiana kompletu podkładek uszczelniających pod wtryskiwaczem przy każdym montażu.",
+      "cena": "588",
+      "stanMagazynowy": 10,
+      "waga": "0.6",
+      "wymiary": {
+        "dlugosc": "22",
+        "szerokosc": "12",
+        "wysokosc": "8"
+      },
+      "wyrozniony": false,
+      "zastosowanie": [
+        {
+          "marka": "Ford",
+          "model": "Transit Mk7",
+          "silnik": "2.2 TDCi (P8FA/P8FB), 63 kW",
+          "lata": "2006–2014"
+        },
+        {
+          "marka": "Ford",
+          "model": "Transit Mk7",
+          "silnik": "2.2 TDCi (QVFA), 81 kW",
+          "lata": "2006–2014"
+        },
+        {
+          "marka": "Ford",
+          "model": "Transit Mk7",
+          "silnik": "2.4 TDCi (JXFA/JXFC), 74 kW",
+          "lata": "2006–2014"
+        },
+        {
+          "marka": "Ford",
+          "model": "Transit Mk7",
+          "silnik": "2.4 TDCi (PHFA/PHFC), 85 kW",
+          "lata": "2006–2014"
+        },
+        {
+          "marka": "Ford",
+          "model": "Tourneo",
+          "silnik": "2.2 / 2.4 TDCi",
+          "lata": "2006–2014"
+        },
+        {
+          "marka": "Fiat",
+          "model": "Ducato III (X250)",
+          "silnik": "2.2 D Multijet (4HV / P22DTE), 74 kW",
+          "lata": "od 2006"
+        },
+        {
+          "marka": "Citroën",
+          "model": "Jumper III (X250)",
+          "silnik": "2.2 HDi (4HV / P22DTE), 74 kW",
+          "lata": "od 2006"
+        },
+        {
+          "marka": "Peugeot",
+          "model": "Boxer III (X250)",
+          "silnik": "2.2 HDi (4HV / P22DTE), 74 kW",
+          "lata": "od 2006"
+        }
+      ],
+      "rodzina": "",
+      "segment": "Samochody osobowe",
+      "cenaNaZapytanie": false,
+      "kaucjaPln": "150",
+      "kaucjaEur": "",
+      "zrodloCenyKorekta": "All makes lista - ceny z vat.xlsx, 2026-08-29, decyzja właściciela"
+    },
+    {
+      "sku": "0445010507",
+      "obrazZrodlowy": "Grp_Produkt_Bosch_0445010507",
+      "obraz": "Produkt_Bosch_0445010507.webp",
+      "nazwa": "Pompa wysokiego ciśnienia Bosch CP4 0445010507 — regenerowana",
+      "kategoria": "Pompy CR",
+      "producent": "Bosch",
+      "typ": "Pompa CR",
+      "markaPojazdu": [
+        "Audi",
+        "Seat",
+        "Volkswagen",
+        "Škoda"
+      ],
+      "kodSilnika": [
+        "CAAA",
+        "CAAB",
+        "CAAC",
+        "CAGA",
+        "CAGB",
+        "CAGC",
+        "CAHA",
+        "CAHB",
+        "CBAA",
+        "CBAB",
+        "CBBB",
+        "CBDA",
+        "CBDB",
+        "CBDC",
+        "CBEA",
+        "CCHA",
+        "CDBA",
+        "CEGA",
+        "CJAA",
+        "CMEA"
+      ],
+      "numeryOem": [
+        "03L130755",
+        "03L130755A",
+        "03L130755J",
+        "03L130755R",
+        "03L130755RX",
+        "03L130851AX",
+        "03L130851X",
+        "0445010507",
+        "0445010508",
+        "0445010520",
+        "0445010541",
+        "0445010542",
+        "0445010543",
+        "0445010546",
+        "0445010555",
+        "0986437407",
+        "0986437408",
+        "0986437409",
+        "0986437410",
+        "0986437433",
+        "03L130755AX",
+        "03L130755RV",
+        "03L130755X"
+      ],
+      "wymienioneCzesci": [
+        "tłoczki",
+        "łożyska",
+        "zawór regulacji ciśnienia",
+        "komplet uszczelnień"
+      ],
+      "infoDodatkowe": "Przed montażem konieczne przepłukanie układu paliwowego i wymiana filtra paliwa — opiłki z uszkodzonej pompy niszczą nową jednostkę.",
+      "cena": "1869.00",
+      "stanMagazynowy": 10,
+      "waga": "2.9",
+      "wymiary": {
+        "dlugosc": "28",
+        "szerokosc": "22",
+        "wysokosc": "20"
+      },
+      "wyrozniony": false,
+      "zastosowanie": [
+        {
+          "marka": "Audi",
+          "model": "A3 8P / Sportback 8PA / Cabrio 8P7",
+          "silnik": "2.0 TDI (CBAA/CBAB/CBEA/CBBB), 100–125 kW",
+          "lata": "2008–2013"
+        },
+        {
+          "marka": "Audi",
+          "model": "A4 B8 / A4 allroad B8",
+          "silnik": "2.0 TDI (CAGA/CAGB/CAGC/CAHB/CMEA), 88–120 kW",
+          "lata": "2007–2012"
+        },
+        {
+          "marka": "Audi",
+          "model": "A5 8T / 8TA / 8F7",
+          "silnik": "2.0 TDI (CAGA/CAHB), 105–120 kW",
+          "lata": "2007–2012"
+        },
+        {
+          "marka": "Audi",
+          "model": "A6 C6 (4F)",
+          "silnik": "2.0 TDI (CAGB), 100–125 kW",
+          "lata": "od 2008"
+        },
+        {
+          "marka": "Audi",
+          "model": "Q5 8R",
+          "silnik": "2.0 TDI quattro (CAGA/CAGB/CAHA/CAHB), 100–125 kW",
+          "lata": "2008–2010"
+        },
+        {
+          "marka": "Audi",
+          "model": "TT 8J",
+          "silnik": "2.0 TDI quattro (CBBB), 125 kW",
+          "lata": "do 2010"
+        },
+        {
+          "marka": "Seat",
+          "model": "Altea 5P / Altea XL",
+          "silnik": "2.0 TDI (CEGA), 125 kW",
+          "lata": "od 2009"
+        },
+        {
+          "marka": "Seat",
+          "model": "Leon (1P)",
+          "silnik": "2.0 TDI (CEGA), 125 kW",
+          "lata": "od 2009"
+        },
+        {
+          "marka": "Seat",
+          "model": "Toledo III 5P2",
+          "silnik": "2.0 TDI (CEGA), 125 kW",
+          "lata": "od 2009"
+        },
+        {
+          "marka": "Seat",
+          "model": "Exeo 3R2 / Exeo ST 3R5",
+          "silnik": "2.0 TDI (CAGC/CAGA/CAHA), 88–125 kW",
+          "lata": "do 2011"
+        },
+        {
+          "marka": "Škoda",
+          "model": "Octavia II RS (1Z)",
+          "silnik": "2.0 TDI (CEGA), 125 kW",
+          "lata": "od 2008"
+        },
+        {
+          "marka": "Škoda",
+          "model": "Superb II (3T)",
+          "silnik": "2.0 TDI (CBBB), 125 kW",
+          "lata": "do 2010"
+        },
+        {
+          "marka": "Škoda",
+          "model": "Yeti 5L",
+          "silnik": "2.0 TDI 4x4 (CBDB/CEGA), 103–125 kW",
+          "lata": "do 2010"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Golf V Variant / Golf Plus V",
+          "silnik": "2.0 TDI (CBDA/CBDB/CBDC), 81–103 kW",
+          "lata": "od 2008"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Golf VI 5K1 / Variant AJ5",
+          "silnik": "2.0 TDI (CBAA/CBAB/CBBB/CBDA/CBDB/CBDC/CJAA), 81–125 kW",
+          "lata": "2008–2013"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Jetta III 1K2",
+          "silnik": "2.0 TDI (CBDA/CBDB/CEGA), 100–125 kW",
+          "lata": "od 2008"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Passat B6 3C2 / Variant 3C5",
+          "silnik": "2.0 TDI (CBAA/CBAB/CBBB), 81–125 kW",
+          "lata": "od 2008"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Passat CC B6 (357)",
+          "silnik": "2.0 TDI (CBAA/CBAB/CBBB), 100–125 kW",
+          "lata": "do 2010"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Scirocco III (137/138)",
+          "silnik": "2.0 TDI (CBDB/CBBB), 103–125 kW",
+          "lata": "2008–2010"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "EOS 1F",
+          "silnik": "2.0 TDI (CBAB), 103 kW",
+          "lata": "do 2010"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Tiguan I 5N",
+          "silnik": "2.0 TDI (CBAA/CBAB/CBBB), 100–125 kW",
+          "lata": "2007–2011"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Amarok",
+          "silnik": "2.0 TDI (CDBA), 90 kW",
+          "lata": "do 2012"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Transporter / Multivan / California T5",
+          "silnik": "2.0 TDI (CAAC/CCHA), 62–103 kW",
+          "lata": "2009–2015"
+        },
+        {
+          "marka": "Volkswagen",
+          "model": "Transporter / Multivan / California T6",
+          "silnik": "2.0 TDI (CAAA/CAAB), 62–132 kW",
+          "lata": "od 2015"
+        }
+      ],
+      "rodzina": "CP4",
+      "segment": "Samochody osobowe",
+      "cenaNaZapytanie": false,
+      "kaucjaPln": "564",
+      "kaucjaEur": ""
+    },
+    {
+      "sku": "R00002D",
+      "obraz": "Produkt_Delphi_R00002D.webp",
+      "nazwa": "Wtryskiwacz CR Delphi R00002D — regenerowany",
+      "kategoria": "Wtryskiwacze",
+      "producent": "Delphi",
+      "rodzina": "",
+      "typ": "Wtryskiwacz CR",
+      "segment": "Samochody osobowe",
+      "markaPojazdu": [
+        "Infiniti",
+        "Jeep",
+        "Mercedes-Benz"
+      ],
+      "kodSilnika": [
+        "OM651.911",
+        "OM651.912",
+        "OM651.913",
+        "OM651.916",
+        "OM651.921",
+        "OM651.924",
+        "OM651.925",
+        "OM651.940",
+        "OM651.950",
+        "OM651.22LA",
+        "ENE"
+      ],
+      "numeryOem": [
+        "28342997",
+        "6510704987",
+        "A6510700587",
+        "A6510704987",
+        "EJBR00002D",
+        "EMBR00002D",
+        "0213130",
+        "10933177",
+        "16600HG00C",
+        "28348371",
+        "468219",
+        "65107004987",
+        "6510700587",
+        "HRD348",
+        "R00002D",
+        "EMBR00001D",
+        "28334532"
+      ],
+      "wymienioneCzesci": [
+        "rozpylacz",
+        "zawór sterujący",
+        "komplet uszczelnień"
+      ],
+      "infoDodatkowe": "Po montażu wymagane wprowadzenie kodu korekcyjnego wtryskiwacza w sterowniku silnika.",
+      "referencjaDelphi": "HRD348",
+      "cena": "605",
+      "cenaNaZapytanie": false,
+      "kaucjaPln": "150",
+      "kaucjaEur": "",
+      "stanMagazynowy": 10,
+      "waga": "",
+      "wymiary": null,
+      "wyrozniony": false,
+      "zastosowanie": [
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Klasa C",
+          "silnik": "2.2 CDI (OM651.911, OM651.912, OM651.913, OM651.921)",
+          "lata": "2008–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Klasa E",
+          "silnik": "2.2 CDI (OM651.911, OM651.924, OM651.925)",
+          "lata": "2009–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "CLS",
+          "silnik": "2.2 CDI (OM651.924)",
+          "lata": "2009–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "GLK",
+          "silnik": "2.2 CDI (OM651.912, OM651.913, OM651.916)",
+          "lata": "2008–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Klasa V",
+          "silnik": "2.2 CDI (OM651.950)",
+          "lata": "2014–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Viano",
+          "silnik": "2.2 CDI (OM651.940)",
+          "lata": "2010–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Vito",
+          "silnik": "2.2 CDI (OM651.940, OM651.950)",
+          "lata": "2010–"
+        },
+        {
+          "marka": "Mercedes-Benz",
+          "model": "Sprinter",
+          "silnik": "2.2 CDI (OM651)",
+          "lata": ""
+        },
+        {
+          "marka": "Jeep",
+          "model": "Compass",
+          "silnik": "2.2 CRD (ENE)",
+          "lata": "2011–"
+        },
+        {
+          "marka": "Jeep",
+          "model": "Patriot",
+          "silnik": "2.2 CRD (ENE)",
+          "lata": "2010–"
+        },
+        {
+          "marka": "Infiniti",
+          "model": "Q50",
+          "silnik": "2.2 d (OM651.22LA)",
+          "lata": "2014–"
+        }
+      ],
+      "obrazZrodlowy": "Grp_Produkt_Delphi_R00002D",
+      "wersje": {
+        "oryginalne": {
+          "cena": "808",
+          "waga": "0.4"
+        },
+        "zamienne": {
+          "cena": "605",
+          "waga": "0.4"
+        }
+      }
+    },
+    {
+      "sku": "0445117010",
+      "obrazZrodlowy": "Grp_Produkt_Bosch_0445117010",
+      "obraz": "Produkt_Bosch_0445117010.webp",
+      "nazwa": "Wtryskiwacz CR Bosch 0445117010 — regenerowany",
+      "kategoria": "Wtryskiwacze",
+      "producent": "Bosch",
+      "typ": "Wtryskiwacz CR",
+      "markaPojazdu": [
+        "Chevrolet"
+      ],
+      "kodSilnika": [],
+      "numeryOem": [
+        "0445117010",
+        "0986435410",
+        "12620534",
+        "19256590",
+        "F00E200577"
+      ],
+      "wymienioneCzesci": [
+        "rozpylacz",
+        "zawór sterujący",
+        "komplet uszczelnień"
+      ],
+      "infoDodatkowe": "",
+      "cena": "",
+      "stanMagazynowy": 10,
+      "waga": "0.6",
+      "wymiary": {
+        "dlugosc": "22",
+        "szerokosc": "12",
+        "wysokosc": "8"
+      },
+      "wyrozniony": false,
+      "zastosowanie": [
+        {
+          "marka": "Chevrolet",
+          "model": "Silverado 2500HD",
+          "silnik": "6.6 Duramax V8 (LML)",
+          "lata": "2011–2016"
+        },
+        {
+          "marka": "Chevrolet",
+          "model": "Silverado 3500HD",
+          "silnik": "6.6 Duramax V8 (LML)",
+          "lata": "2011–2016"
+        }
+      ],
+      "rodzina": "",
+      "segment": "Samochody osobowe",
+      "cenaNaZapytanie": true,
+      "kaucjaPln": "150",
+      "kaucjaEur": "",
+      "zrodloCeny": "All makes lista - ceny z vat.xlsx, 2026-08-29"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "catalog-portal",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "Apps/Web",
+    "Apps/Api_Php",
+    "Packages/Shared"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/Dev_Start.mjs",
+    "build": "npm run build -w @catalog/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "npm run test -w @catalog/api-php",
+    "test:web": "npm run test -w @catalog/web",
+    "test:e2e": "npm run test:e2e -w @catalog/web",
+    "db:reset": "npm run db:reset -w @catalog/api-php",
+    "products:sync": "node scripts/Products_Sync.mjs",
+    "deploy": "npm run deploy -w @catalog/web",
+    "deploy:dry": "npm run deploy:dry -w @catalog/web",
+    "products:push": "npm run products:push -w @catalog/web",
+    "products:push:dry": "npm run products:push:dry -w @catalog/web",
+    "env:push": "npm run env:push -w @catalog/web",
+    "env:push:dry": "npm run env:push:dry -w @catalog/web"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

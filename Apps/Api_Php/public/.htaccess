@@ -1,0 +1,29 @@
+# DEMO PARTS Katalog B2B — API front controller (Apache). Served under /api.
+Options -Indexes
+
+# Never serve secrets, databases, logs or SQL dumps
+<FilesMatch "(^\.env|\.(env|sqlite|sqlite-wal|sqlite-shm|db|log|sql|bak)$)">
+  Require all denied
+</FilesMatch>
+
+<Files "composer.json">
+  Require all denied
+</Files>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Application internals are never reachable over HTTP (if they end up inside the web root)
+  RewriteRule (^|/)(storage|vendor|src|database|tests|scripts|templates)(/|$) - [F,L]
+
+  # Pass the Authorization header through to PHP (CGI/FastCGI hosts drop it)
+  RewriteCond %{HTTP:Authorization} .
+  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+  # Real files are served directly; everything else goes to the front controller
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+  RewriteRule ^ index.php [L,QSA]
+</IfModule>
+
+AddDefaultCharset UTF-8

@@ -1,0 +1,97 @@
+/* Global base — light shop register (white page, dark brand band only in
+   the footer). Component styles live in CSS modules next to components. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--cdm-bg);
+  color: var(--cdm-ink);
+  font-family: var(--cdm-font-body);
+  font-size: var(--cdm-fs-md);
+  line-height: var(--cdm-lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+/* Headings are never red — ink only. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--cdm-ink);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cdm-ink);
+  outline-offset: 2px;
+}
+
+/* D-01: one focus style for every form field — ink border + ink ring. Mantine
+   paints a focused input in the primary colour (red, which reads as an error);
+   the password field's inner input got the global outline instead. An input in
+   error keeps its red border. */
+.mantine-Input-input:not([data-error]):focus,
+.mantine-Input-input:not([data-error]):focus-within {
+  border-color: var(--cdm-ink);
+}
+.mantine-Input-input:focus,
+.mantine-Input-input:focus-within {
+  outline: 2px solid var(--cdm-ink);
+  outline-offset: 1px;
+}
+.mantine-PasswordInput-innerInput:focus-visible {
+  outline: none;
+}
+
+/* Eyebrow label (Inter 600, spaced uppercase) — as on shop.catalog-demo.example. */
+.cdm-eyebrow {
+  margin: 0 0 var(--cdm-space-sm);
+  font-family: var(--cdm-font-body);
+  font-size: var(--cdm-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--cdm-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cdm-ink-muted);
+}
+
+/* OE / SKU numbers. */
+.cdm-mono {
+  font-family: var(--cdm-font-mono);
+  letter-spacing: var(--cdm-ls-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

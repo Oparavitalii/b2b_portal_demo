@@ -1,0 +1,85 @@
+# DEMO PARTS — Katalog B2B (portal.catalog-demo.example) — web root on shared hosting.
+# Uploaded by Apps/Web/scripts/Deploy.ts in place of dist/.htaccess.
+# Web root = SPA (dist/) + api/index.php; the API code itself lives outside
+# the web root in ~/katalog_app/Api_Php (private hosting notes).
+
+Options -Indexes
+AddDefaultCharset UTF-8
+
+# ---------------------------------------------------------------------------
+# Never serve dotfiles (.env, .git…), source maps, databases, logs or dumps.
+# ---------------------------------------------------------------------------
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(map|sqlite|sqlite-wal|sqlite-shm|db|log|sql|bak)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Dot-paths anywhere in the URL (/.env, /.git/config, /api/.htaccess) → 403.
+  # /.well-known/ stays open for the SSL certificate (AutoSSL / Let's Encrypt).
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule (^|/)\. - [F,L]
+
+  # HTTPS only — the catalogue carries logins and company data.
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Pass the Authorization header (Bearer access token) through to PHP.
+  RewriteCond %{HTTP:Authorization} .
+  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+  # /api and /api/* → the API front controller (it strips the /api prefix).
+  RewriteRule ^api/index\.php$ - [L]
+  RewriteRule ^api(/.*)?$ api/index.php [L,QSA]
+
+  # SPA fallback — real files are served, every other URL gets index.html
+  # so React Router handles /moje-konto, /produkt/:sku…
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compression and caching. Vite emits hashed bundle names → cache a year;
+# index.html is never cached, or users stay on an old build after a deploy.
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript        "access plus 1 year"
+  ExpiresByType text/css               "access plus 1 year"
+  ExpiresByType font/woff2             "access plus 1 year"
+  ExpiresByType image/webp             "access plus 1 month"
+  ExpiresByType image/png              "access plus 1 month"
+  ExpiresByType image/svg+xml          "access plus 1 month"
+  ExpiresByType image/x-icon           "access plus 1 month"
+  ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+  </FilesMatch>
+
+  # Security headers (the API sets its own as well; "set" never duplicates).
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>

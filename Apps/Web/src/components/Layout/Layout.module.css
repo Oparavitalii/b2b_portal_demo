@@ -1,0 +1,334 @@
+/* Shell: white header bar, light page, dark brand band in the footer.
+   Footer ported from shop.catalog-demo.example Footer20 (woodmart-child footer.css).
+   Grids always use minmax(0, 1fr) — a bare 1fr lets a long e-mail or OE
+   number push the page sideways on phones. */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--cdm-content-max);
+  margin: 0 auto;
+  padding: var(--cdm-space-lg) var(--cdm-space-md) var(--cdm-space-xl);
+}
+
+@media (min-width: 48em) {
+  .main {
+    padding-inline: var(--cdm-space-lg);
+  }
+}
+
+/* ---------- header ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--cdm-z-nav);
+  height: var(--cdm-nav-height);
+  background: var(--cdm-bg);
+  border-bottom: 1px solid var(--cdm-border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--cdm-space-lg);
+  height: 100%;
+  max-width: var(--cdm-content-max);
+  margin: 0 auto;
+  padding: 0 var(--cdm-space-md);
+}
+
+@media (min-width: 48em) {
+  .headerInner {
+    padding: 0 var(--cdm-space-lg);
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: var(--cdm-radius-sm);
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 26px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--cdm-space-xs);
+  min-width: 0;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--cdm-radius-sm);
+  font-size: var(--cdm-fs-sm);
+  font-weight: 600;
+  color: var(--cdm-ink-dim);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color var(--cdm-dur-fast) var(--cdm-ease-out),
+    background-color var(--cdm-dur-fast) var(--cdm-ease-out);
+}
+
+.navLink:hover {
+  color: var(--cdm-ink);
+  background: var(--cdm-surface);
+}
+
+/* Active item: ink underline (red stays reserved for the page CTA). */
+.navLinkActive {
+  color: var(--cdm-ink);
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -2px;
+  height: 2px;
+  background: var(--cdm-ink);
+}
+
+.navButton {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.cartCount {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--cdm-radius-full);
+  background: var(--cdm-ink);
+  color: var(--cdm-fg);
+  font-size: var(--cdm-fs-xs);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-xs);
+}
+
+.drawerNav .navLink {
+  padding: 12px 10px;
+  font-size: var(--cdm-fs-md);
+}
+
+.drawerNav .navLinkActive::after {
+  left: 0;
+  right: auto;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  height: auto;
+}
+
+/* ---------- footer (Footer20 port) ---------- */
+
+.footer {
+  background: var(--cdm-ink);
+  color: var(--cdm-fg-dim);
+  font-size: var(--cdm-fs-md);
+  line-height: var(--cdm-lh-body);
+  border-top: 3px solid var(--cdm-red); /* the footer's only red accent */
+  padding: var(--cdm-space-xl) var(--cdm-space-md) var(--cdm-space-lg);
+}
+
+@media (min-width: 48em) {
+  .footer {
+    padding-inline: var(--cdm-space-lg);
+  }
+}
+
+.footerInner {
+  max-width: var(--cdm-content-max);
+  margin: 0 auto;
+}
+
+.footerBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-xl);
+  padding-bottom: var(--cdm-space-xl);
+}
+
+.footerBrand {
+  max-width: 32ch;
+}
+
+.footerLogo {
+  display: inline-block;
+  border-radius: var(--cdm-radius-sm);
+}
+
+.footerLogo img {
+  display: block;
+  width: auto;
+  height: 28px;
+  max-width: 100%;
+}
+
+.footerLogo:focus-visible,
+.footerLink:focus-visible {
+  outline: 2px solid var(--cdm-red-on-dark);
+  outline-offset: 3px;
+}
+
+.footerTagline {
+  margin: var(--cdm-space-md) 0 0;
+  font-size: var(--cdm-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--cdm-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cdm-fg-muted);
+}
+
+.footerIntro {
+  margin: var(--cdm-space-sm) 0 0;
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-fg-dim);
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cdm-space-lg);
+}
+
+.footerColTitle {
+  margin: 0 0 var(--cdm-space-md);
+  font-family: var(--cdm-font-body);
+  font-size: var(--cdm-fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--cdm-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cdm-fg-muted);
+}
+
+.footerList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-sm);
+}
+
+.footerLink {
+  display: inline-block;
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-fg-dim);
+  text-decoration: none;
+  border-radius: var(--cdm-radius-sm);
+  overflow-wrap: anywhere;
+  transition: color var(--cdm-dur-fast) var(--cdm-ease-out);
+}
+
+.footerLink:hover {
+  color: var(--cdm-fg);
+}
+
+.footerAddr {
+  margin: 0 0 var(--cdm-space-md);
+  font-size: var(--cdm-fs-sm);
+  font-style: normal;
+  color: var(--cdm-fg-dim);
+}
+
+.footerLegal {
+  padding-top: var(--cdm-space-lg);
+  border-top: 1px solid var(--cdm-border-dark);
+}
+
+.footerLegalId,
+.footerLegalTm {
+  margin: 0 0 var(--cdm-space-xs);
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-fg-muted);
+}
+
+.footerLegalId {
+  color: var(--cdm-fg-dim);
+}
+
+.footerLegalTm {
+  max-width: 78ch;
+  margin-bottom: 0;
+}
+
+.footerBottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-sm);
+  margin-top: var(--cdm-space-lg);
+  padding-top: var(--cdm-space-lg);
+  border-top: 1px solid var(--cdm-border-dark);
+}
+
+.footerCopy {
+  margin: 0;
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-fg-muted);
+}
+
+@media (min-width: 48em) {
+  .footerBottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 54em) {
+  .footerGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footerTagline {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 64em) {
+  .footer {
+    padding-top: var(--cdm-space-2xl);
+  }
+
+  .footerBody {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footerGrid {
+    flex: 0 1 44rem;
+  }
+}

@@ -1,0 +1,146 @@
+/* InPost shipping panel on the admin order page (B-22). Mobile first: every
+   grid collapses to one column, tables scroll inside their own box. */
+
+.panel {
+  min-width: 0;
+  margin-top: var(--cdm-space-lg);
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+}
+
+.panelTitle {
+  margin: 0 0 var(--cdm-space-sm);
+  font-size: var(--cdm-fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cdm-ink-muted);
+}
+
+.section {
+  min-width: 0;
+  margin-top: var(--cdm-space-md);
+  padding-top: var(--cdm-space-md);
+  border-top: 1px solid var(--cdm-border);
+}
+
+.sectionTitle {
+  margin: 0 0 var(--cdm-space-xs);
+  font-size: var(--cdm-fs-sm);
+  font-weight: 700;
+  color: var(--cdm-ink);
+}
+
+.tableBox {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--cdm-space-sm);
+}
+
+.pointList {
+  display: grid;
+  gap: var(--cdm-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pointOption {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cdm-space-sm);
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+  background: var(--cdm-bg);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.pointOption:hover {
+  border-color: var(--cdm-ink-muted);
+}
+
+.pointOption:focus-visible {
+  outline: 2px solid var(--cdm-ink);
+  outline-offset: 2px;
+}
+
+.pointOptionActive {
+  composes: pointOption;
+  border-color: var(--cdm-ink);
+  box-shadow: inset 0 0 0 1px var(--cdm-ink);
+}
+
+.pointMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.pointName {
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.pointMeta {
+  color: var(--cdm-ink-muted);
+  font-size: var(--cdm-fs-xs);
+}
+
+.selected {
+  padding: 10px 12px;
+  border-radius: var(--cdm-radius-sm);
+  background: var(--cdm-surface);
+  overflow-wrap: anywhere;
+}
+
+.inlineRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--cdm-space-xs);
+}
+
+.inlineRow > :first-child {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.geowidgetBox {
+  position: relative;
+  min-height: 300px;
+}
+
+.geowidgetLoading {
+  display: flex;
+  align-items: center;
+  gap: var(--cdm-space-xs);
+  padding: var(--cdm-space-sm) 0;
+}
+
+.geowidgetMount {
+  width: 100%;
+}
+
+.geowidget {
+  display: block;
+  width: 100%;
+  height: min(70dvh, 640px);
+}

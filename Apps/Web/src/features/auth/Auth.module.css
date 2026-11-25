@@ -1,0 +1,50 @@
+/* Public auth pages: one centred card on the light page. Red stays for the
+   single primary button of the form. Grids use minmax(0, 1fr) so a long
+   e-mail never pushes the page sideways on phones. */
+
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  padding-block: var(--cdm-space-md) var(--cdm-space-lg);
+}
+
+.card {
+  width: 100%;
+  max-width: 28rem;
+  padding: var(--cdm-space-lg) var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+  box-shadow: var(--cdm-shadow-sm);
+}
+
+.cardWide {
+  max-width: 44rem;
+}
+
+@media (min-width: 48em) {
+  .card {
+    padding: var(--cdm-space-lg);
+  }
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-md);
+}
+
+@media (min-width: 48em) {
+  .fieldGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.footer {
+  margin-top: var(--cdm-space-md);
+  padding-top: var(--cdm-space-md);
+  border-top: 1px solid var(--cdm-border);
+  font-size: var(--cdm-fs-sm);
+  color: var(--cdm-ink-dim);
+}

@@ -1,0 +1,223 @@
+/* Admin panel. Tables scroll inside their own box on small screens, so the
+   page never scrolls sideways (KN Catalog_Mobile_Overflow). */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cdm-space-xs);
+  margin-bottom: var(--cdm-space-lg);
+  border-bottom: 1px solid var(--cdm-border);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  color: var(--cdm-ink-muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--cdm-ink);
+}
+
+.navLinkActive {
+  color: var(--cdm-ink);
+  border-bottom-color: var(--cdm-ink);
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--cdm-space-sm);
+  align-items: end;
+  margin-bottom: var(--cdm-space-md);
+}
+
+.tableBox {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+}
+
+.discountCell {
+  display: flex;
+  align-items: center;
+  gap: var(--cdm-space-xs);
+  min-width: 190px;
+}
+
+.thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+}
+
+.thumbEmpty {
+  composes: thumb;
+  display: block;
+}
+
+.importBox {
+  padding: var(--cdm-space-md);
+  margin-bottom: var(--cdm-space-lg);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: var(--cdm-space-sm);
+  margin-top: var(--cdm-space-md);
+}
+
+.stat {
+  padding: var(--cdm-space-sm);
+  background: var(--cdm-bg);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+}
+
+.statValue {
+  font-family: var(--cdm-font-head);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.muted {
+  color: var(--cdm-ink-muted);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Stan + czas wysyłki per row (Pilot_Run 2026-10-10). */
+.stockCell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--cdm-space-xs);
+  max-width: 240px;
+  min-width: 200px;
+}
+
+.stockHint {
+  flex-basis: 100%;
+}
+
+.nameCell {
+  min-width: 200px;
+}
+
+/* The product name opens the editor (same as «Edytuj»). */
+.nameButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cdm-ink);
+  font: inherit;
+  font-size: var(--mantine-font-size-sm);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--cdm-border);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.nameButton:hover {
+  text-decoration-color: currentColor;
+}
+
+.nameButton:focus-visible {
+  outline: 2px solid var(--cdm-ink);
+  outline-offset: 2px;
+}
+
+.statusCell {
+  min-width: 104px;
+  white-space: nowrap;
+}
+
+/* Bulk edit: shown above the table while products are selected (owner, 2026-10-12). */
+.bulkBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cdm-space-sm);
+  padding: var(--cdm-space-sm) var(--cdm-space-md);
+  margin-bottom: var(--cdm-space-sm);
+  background: var(--cdm-surface);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+}
+
+.checkCell {
+  width: 1%;
+}
+
+/* Per-product rabaty and szablony rabatów (Pilot_Run 2026-10-16). */
+.discountsCell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cdm-space-xs);
+  min-width: 190px;
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-xs);
+}
+
+/* Type · target · % · remove; wraps to two lines on a phone. */
+.ruleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--cdm-space-xs);
+}
+
+.ruleTarget {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.ruleChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* Szablon editor: the save bar stays on screen while the product list scrolls. */
+.saveBar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cdm-space-sm);
+  margin-top: var(--cdm-space-lg);
+  padding: var(--cdm-space-sm) var(--cdm-space-md);
+  background: var(--cdm-bg);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  box-shadow: 0 -4px 16px rgb(0 0 0 / 8%);
+}

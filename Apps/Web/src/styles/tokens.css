@@ -1,0 +1,176 @@
+/* ================================================================
+   DEMO PARTS — design tokens (copy of the --cdm-* custom properties from
+   shop.catalog-demo.example: wp-content/themes/woodmart-child/assets/css/tokens.css).
+   Same names and values, so CSS ported from the shop reads the same.
+
+   Palette limit: 7 brand colours + 4 UI states. Every other shade is a
+   color-mix() of those. RED BUDGET: at most one red element per screen;
+   red is never a heading colour.
+   Fonts are self-hosted (@fontsource, imported in main.tsx) — no Google
+   Fonts request, so no visitor IP goes to Google.
+   ================================================================ */
+
+:root {
+  /* A · 7 brand colours */
+  --cdm-red: #e30613; /* CTA / link / price — 4.88:1 on white */
+  --cdm-red-hover: #ae0f0a; /* :hover — 7.31:1 on white */
+  --cdm-chrome-light: #ececec; /* decoration only */
+  --cdm-chrome-mid: #878787; /* decoration, field border, meta on dark band */
+  --cdm-bg: #ffffff;
+  --cdm-ink: #111318; /* text AND dark brand band */
+  --cdm-surface: #f5f6f7;
+
+  /* UI states (not brand colours) */
+  --cdm-danger: #c0392b;
+  --cdm-success: #2e7d43;
+  --cdm-warning: #96610f;
+  --cdm-info: #2f6fb0;
+
+  /* B · derived values */
+  --cdm-ink-dim: color-mix(
+    in srgb,
+    var(--cdm-ink) 80%,
+    var(--cdm-bg)
+  ); /* #414246 */
+  --cdm-ink-muted: color-mix(
+    in srgb,
+    var(--cdm-ink) 65%,
+    var(--cdm-bg)
+  ); /* #646669 */
+
+  --cdm-fg: var(--cdm-bg);
+  --cdm-fg-dim: color-mix(
+    in srgb,
+    var(--cdm-bg) 78%,
+    var(--cdm-ink)
+  ); /* #cbcbcc */
+  --cdm-fg-muted: var(--cdm-chrome-mid);
+
+  --cdm-graphite: var(--cdm-ink);
+  --cdm-graphite-2: color-mix(
+    in srgb,
+    var(--cdm-ink) 96%,
+    var(--cdm-bg)
+  ); /* #1b1c21 */
+
+  --cdm-surface-2: color-mix(
+    in srgb,
+    var(--cdm-surface) 97%,
+    var(--cdm-ink)
+  ); /* #eeeff0 */
+  --cdm-surface-3: color-mix(
+    in srgb,
+    var(--cdm-surface) 93%,
+    var(--cdm-ink)
+  ); /* #e5e6e7 */
+
+  --cdm-border: color-mix(
+    in srgb,
+    var(--cdm-surface) 90%,
+    var(--cdm-ink)
+  ); /* #dedfe1 */
+  --cdm-border-strong: color-mix(
+    in srgb,
+    var(--cdm-surface) 75%,
+    var(--cdm-ink)
+  ); /* #bcbdbf */
+  --cdm-border-dark: color-mix(
+    in srgb,
+    var(--cdm-ink) 92%,
+    var(--cdm-bg)
+  ); /* #24262a */
+  --cdm-border-field: var(--cdm-chrome-mid);
+  --cdm-border-field-dark: var(--cdm-chrome-mid);
+
+  --cdm-red-on-dark: color-mix(
+    in srgb,
+    var(--cdm-red) 74%,
+    var(--cdm-bg)
+  ); /* #ea4750, dark band only */
+  --cdm-accent-fg: var(--cdm-bg);
+  --cdm-red-soft: color-mix(in srgb, var(--cdm-red) 10%, transparent);
+  --cdm-red-rgb: 227, 6, 19;
+  --cdm-red-rgb-sp: 227 6 19;
+  --cdm-ink-rgb-sp: 17 19 24;
+
+  --cdm-gradient-red: linear-gradient(
+    160deg,
+    var(--cdm-red) 0%,
+    var(--cdm-red-hover) 100%
+  );
+  --cdm-gradient-chrome: linear-gradient(
+    180deg,
+    var(--cdm-chrome-light) 0%,
+    var(--cdm-chrome-mid) 100%
+  );
+
+  /* C · typography */
+  --cdm-font-head: 'Saira Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --cdm-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cdm-font-mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --cdm-fs-xs: 0.75rem;
+  --cdm-fs-sm: 0.875rem;
+  --cdm-fs-md: 1rem;
+  --cdm-fs-lg: 1.125rem;
+  --cdm-fs-xl: 1.5rem;
+  --cdm-fs-2xl: 2rem;
+  --cdm-fs-3xl: 3rem;
+  --cdm-fs-4xl: 4rem;
+  --cdm-fs-display-min: 1.25rem; /* below this, headings use Inter 600 */
+
+  --cdm-lh-tight: 1.06;
+  --cdm-lh-heading: 1.2;
+  --cdm-lh-body: 1.6;
+  --cdm-lh-prose: 1.75;
+  --cdm-prose-max: 68ch;
+  --cdm-ls-display: 0;
+  --cdm-ls-display-dark: 0.01em;
+  --cdm-ls-eyebrow: 0.14em;
+  --cdm-ls-mono: 0.02em;
+  --cdm-ls-btn: 0.08em;
+
+  /* D · spacing, shape, motion */
+  --cdm-space-xs: 0.25rem;
+  --cdm-space-sm: 0.5rem;
+  --cdm-space-md: 1rem;
+  --cdm-space-lg: 2rem;
+  --cdm-space-xl: 4rem;
+  --cdm-space-2xl: 6rem;
+  --cdm-content-max: 1280px;
+
+  --cdm-radius-sm: 2px;
+  --cdm-radius-md: 6px;
+  --cdm-radius-lg: 12px;
+  --cdm-radius-full: 9999px;
+
+  --cdm-shadow-sm: 0 1px 2px color-mix(in srgb, var(--cdm-ink) 6%, transparent);
+  --cdm-shadow-md: 0 6px 18px
+    color-mix(in srgb, var(--cdm-ink) 10%, transparent);
+  --cdm-shadow-lg: 0 24px 60px
+    color-mix(in srgb, var(--cdm-ink) 14%, transparent);
+  --cdm-shadow-glow:
+    0 8px 24px rgba(var(--cdm-red-rgb), 0.26),
+    0 0 0 5px rgba(var(--cdm-red-rgb), 0.11);
+  --cdm-shadow-glow-ink:
+    0 8px 24px color-mix(in srgb, var(--cdm-ink) 26%, transparent),
+    0 0 0 5px color-mix(in srgb, var(--cdm-ink) 10%, transparent);
+
+  --cdm-dur-fast: 180ms;
+  --cdm-dur-med: 320ms;
+  --cdm-dur-slow: 600ms;
+  --cdm-dur-zoom: 700ms;
+  --cdm-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --cdm-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --cdm-reveal-y: 16px;
+  --cdm-reveal-stagger: 90ms;
+
+  /* layout chrome */
+  --cdm-nav-height: 64px;
+  --cdm-z-nav: 100;
+
+  /* backwards-compatible names used by ported shop CSS */
+  --cdm-ease: var(--cdm-ease-out);
+  --cdm-dur: var(--cdm-dur-fast);
+  --cdm-red-dark: var(--cdm-red-hover);
+}

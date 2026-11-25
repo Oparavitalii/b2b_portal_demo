@@ -1,0 +1,168 @@
+/* Koszyk — lines on the left, totals + sending on the right (one column on
+   phones). Prices in ink; the one red element is "Wyślij zamówienie".
+   Grids use minmax(0, 1fr): never a bare 1fr (mobile overflow). */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cdm-space-lg);
+  align-items: start;
+}
+
+@media (min-width: 62em) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+  }
+}
+
+.lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--cdm-space-md);
+  padding: var(--cdm-space-md);
+}
+
+.line + .line {
+  border-top: 1px solid var(--cdm-border);
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-sm);
+  background: var(--cdm-bg);
+  overflow: hidden;
+  color: var(--cdm-ink-muted);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.info {
+  min-width: 0;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--cdm-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  margin-top: 2px;
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-ink-muted);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--cdm-space-sm) var(--cdm-space-md);
+  margin-top: var(--cdm-space-sm);
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2px var(--cdm-space-md);
+  font-size: var(--cdm-fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.prices dt {
+  font-size: var(--cdm-fs-xs);
+  color: var(--cdm-ink-muted);
+}
+
+.prices dd {
+  margin: 0;
+  color: var(--cdm-ink);
+  white-space: nowrap;
+}
+
+.lineTotal {
+  font-weight: 700;
+}
+
+.onRequest {
+  font-weight: 600;
+  color: var(--cdm-ink);
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cdm-space-md);
+  min-width: 0;
+}
+
+.panel {
+  padding: var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-bg);
+  font-size: var(--cdm-fs-sm);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.panelTitle {
+  margin: 0 0 6px;
+  font-size: var(--cdm-fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cdm-ink-muted);
+}
+
+.link {
+  font-weight: 600;
+  color: var(--cdm-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.done {
+  max-width: 40rem;
+  padding: var(--cdm-space-lg) var(--cdm-space-md);
+  border: 1px solid var(--cdm-border);
+  border-left: 4px solid var(--cdm-success);
+  border-radius: var(--cdm-radius-md);
+  background: var(--cdm-surface);
+}
+
+.number {
+  font-family: var(--cdm-font-head);
+  font-size: var(--cdm-fs-xl);
+  font-weight: 700;
+  color: var(--cdm-ink);
+}
+
+@media (max-width: 30em) {
+  .prices {
+    grid-template-columns: repeat(2, auto);
+  }
+}
